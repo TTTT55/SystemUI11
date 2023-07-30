@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+    <uses-sdk android:targetSdkVersion="30" android:minSdkVersion="24" />
+    <!--
+    Manifest entries specific to SystemUI. This is merged with AndroidManifest.xml.
+    Refer comments around specific entries on how to extend individual components.
+    -->
+
+    <application
+        android:backupAgent="com.android.systemui.backup.BackupHelper"
+        android:hardwareAccelerated="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/derived_app_name"
+        android:theme="@style/Theme.Shade"
+        android:supportsRtl="true"
+        tools:targetApi="30">
+
+        <activity
+            android:name="com.android.systemui.SystemUIApplication"
+            tools:node="remove" />
+
+        <!--
+        Main app activity. When extending only change the name, and keep all the
+        attributes and intent filters the same
+        -->
+        
+        <activity
+            android:name="com.studio.shade.MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <service
+            android:name="com.studio.shade.CustomStatusBarService"
+            android:exported="true"
+            android:label="Shade Droid Service"
+            android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE">
+            <intent-filter>
+                <action android:name="android.accessibilityservice.AccessibilityService" />
+            </intent-filter>
+            <meta-data
+                android:name="android.accessibilityservice"
+                android:resource="@xml/accessibility_service_config" />
+        </service>
+    </application>
+
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-feature
+        android:name="android.hardware.accessibility.screen_reader"
+        android:required="true" />
+    <uses-permission android:name="android.permission.EXPAND_STATUS_BAR" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+
+</manifest>

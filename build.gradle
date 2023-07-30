@@ -216,4 +216,4 @@ allprojects {
         }
     }
 }
-//apply from: 'shade/shade.gradle'
+apply from: 'shade/shade.gradle'

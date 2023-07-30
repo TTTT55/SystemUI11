@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.android.systemui.statusbar.phone.PhoneStatusBarView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/custom_status_bar_height"
+    android:id="@+id/status_bar"
+    android:orientation="vertical"
+    android:focusable="false"
+    android:descendantFocusability="afterDescendants"
+    android:accessibilityPaneTitle="StatusBar">
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/custom_status_bar_height"
+        android:background="#996289"
+        android:alpha="0.5">
+
+        <!-- Add your custom content here -->
+
+    </FrameLayout>
+</com.android.systemui.statusbar.phone.PhoneStatusBarView>

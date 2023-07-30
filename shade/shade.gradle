@@ -1,0 +1,35 @@
+android {
+    defaultConfig {
+        applicationVariants.all { variant ->
+            if (variant.flavorName.startsWith("shade")) {
+                variant.outputs.each {
+                    it.versionNameOverride new Date().format("yyyy-MM-dd HH:mm")
+                    if (variant.buildType.name == "release") {
+                        it.versionCodeOverride ((System.currentTimeMillis() / 60000) as int)
+                    }
+                }
+            }
+        }
+    }
+
+    flavorDimensions += "app"
+    productFlavors {
+        create ("shade") {
+            dimension "app"
+            applicationId 'com.studio.shade'
+            testApplicationId 'com.studio.shade.tests'
+            versionName 'R'
+            applicationIdSuffix = ".shade"
+            versionNameSuffix = "-shade"
+            isDefault true
+        }
+    }
+
+    sourceSets {
+        shade {
+            res.srcDirs = ['shade/res', 'res']
+            java.srcDirs = ['shade/src', 'src']
+            manifest.srcFile "shade/AndroidManifest.xml"
+        }
+    }
+}
