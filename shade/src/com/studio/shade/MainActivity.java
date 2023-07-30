@@ -1,6 +1,7 @@
-package com.studio.shade;
+package com.studio.statusbar;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.text.TextUtils;
@@ -11,6 +12,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
     private Switch customStatusBarSwitch;
+    private Switch modifySettingsSwitch;
+    private Switch displayOverAppsSwitch;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,6 +21,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         customStatusBarSwitch = findViewById(R.id.switch_custom_status_bar);
+        modifySettingsSwitch = findViewById(R.id.modify_settings_switch);
+        displayOverAppsSwitch = findViewById(R.id.display_over_apps_switch);
 
         customStatusBarSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -30,6 +35,48 @@ public class MainActivity extends AppCompatActivity {
                 } else {
                     // Disable the accessibility service
                     Intent intent = new Intent(Settings.ACTION_ACCESSIBILITY_SETTINGS);
+                    startActivity(intent);
+                }
+            }
+        });
+
+        modifySettingsSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                // Handle modify settings switch change
+                if (isChecked) {
+                    // Request modify settings permission
+                    Intent intent = new Intent(Settings.ACTION_MANAGE_WRITE_SETTINGS);
+                    intent.setData(Uri.parse("package:" + getPackageName()));
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    startActivity(intent);
+                } else {
+                    // Disable modify settings permission
+                    Intent intent = new Intent(Settings.ACTION_MANAGE_WRITE_SETTINGS);
+                    intent.setData(Uri.parse("package:" + getPackageName()));
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    intent.putExtra(Settings.EXTRA_APP_PACKAGE, getPackageName());
+                    startActivity(intent);
+                }
+            }
+        });
+
+        displayOverAppsSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                // Handle display over other apps switch change
+                if (isChecked) {
+                    // Request modify settings permission
+                    Intent intent = new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION);
+                    intent.setData(Uri.parse("package:" + getPackageName()));
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    startActivity(intent);
+                } else {
+                    // Disable modify settings permission
+                    Intent intent = new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION);
+                    intent.setData(Uri.parse("package:" + getPackageName()));
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    intent.putExtra(Settings.EXTRA_APP_PACKAGE, getPackageName());
                     startActivity(intent);
                 }
             }
