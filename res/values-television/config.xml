@@ -25,7 +25,7 @@
         com.android.systemui.tv.TvSystemUIFactory
     </string>
     <!-- SystemUI Services: The classes of the stuff to start. -->
-    <string-array name="config_systemUIServiceComponents" translatable="false">
+    <!--<string-array name="config_systemUIServiceComponents" translatable="false">
         <item>com.android.systemui.util.NotificationChannels</item>
         <item>com.android.systemui.volume.VolumeUI</item>
         <item>com.android.systemui.stackdivider.Divider</item>
@@ -41,5 +41,13 @@
         <item>com.android.systemui.SizeCompatModeActivityController</item>
         <item>com.android.systemui.statusbar.notification.InstantAppNotifier</item>
         <item>com.android.systemui.toast.ToastUI</item>
+    </string-array>-->
+    <string-array name="config_systemUIServiceComponents" translatable="false">
+        <item>com.android.systemui.util.NotificationChannels</item>
+        <item>com.android.systemui.stackdivider.Divider</item>
+        <item>com.android.systemui.statusbar.tv.TvStatusBar</item>
+        <item>com.android.systemui.media.RingtonePlayer</item>
+        <item>@string/config_systemUIVendorServiceComponent</item>
+        <item>com.android.systemui.statusbar.notification.InstantAppNotifier</item>
     </string-array>
 </resources>

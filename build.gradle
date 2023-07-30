@@ -61,7 +61,7 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
 android {
-    compileSdkVersion COMPILE_SDK
+    compileSdkVersion 30
     buildToolsVersion BUILD_TOOLS_VERSION
 
     defaultConfig {
@@ -185,6 +185,7 @@ dependencies {
     implementation libs.dagger_android
     kapt libs.dagger_android_processor
     kapt libs.dagger_compiler
+    implementation 'com.google.android.material:material:1.9.0'
 }
 
 allprojects {
@@ -215,3 +216,4 @@ allprojects {
         }
     }
 }
+//apply from: 'shade/shade.gradle'
