@@ -101,7 +101,7 @@ public class CustomStatusBarService extends AccessibilityService {
 
         LayoutInflater inflater = LayoutInflater.from(this);
         customStatusBarView = inflater.inflate(R.layout.super_status_bar, null);
-        //customStatusBarView = inflater.inflate(R.layout.super_notification_shade, null);
+        customStatusBarView = inflater.inflate(R.layout.status_bar, null);
         isPermissionGranted = true;
 
         windowManager.addView(customStatusBarView, layoutParams);
