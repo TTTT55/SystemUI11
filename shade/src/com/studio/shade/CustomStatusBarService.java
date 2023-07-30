@@ -29,7 +29,6 @@ import androidx.annotation.RequiresApi;
 
 import com.android.systemui.statusbar.phone.PhoneStatusBarView;
 import com.android.systemui.statusbar.phone.StatusBarWindowView;
-import com.android.systemui.statusbar.phone.NotificationPanelWindowView;
 import com.android.systemui.R;
 
 public class CustomStatusBarService extends AccessibilityService {
@@ -101,8 +100,8 @@ public class CustomStatusBarService extends AccessibilityService {
         layoutParams.gravity = Gravity.TOP;
 
         LayoutInflater inflater = LayoutInflater.from(this);
-        //customStatusBarView = inflater.inflate(R.layout.custom_status_bar_layout, null);
-        customStatusBarView = inflater.inflate(R.layout.super_notification_shade, null);
+        customStatusBarView = inflater.inflate(R.layout.super_status_bar, null);
+        //customStatusBarView = inflater.inflate(R.layout.super_notification_shade, null);
         isPermissionGranted = true;
 
         windowManager.addView(customStatusBarView, layoutParams);
