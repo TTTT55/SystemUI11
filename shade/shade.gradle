@@ -17,7 +17,6 @@ android {
         create ("shade") {
             dimension "app"
             applicationId 'com.studio.shade'
-            testApplicationId 'com.studio.shade.tests'
             versionName 'R'
             applicationIdSuffix = ".shade"
             versionNameSuffix = "-shade"
